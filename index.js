@@ -1,5 +1,19 @@
-let inquirer = require("inquirer")
-let fs = require("fs")
+const inquirer = require("inquirer");
+const fs = require("fs");
+const axios = require("axios");
+const readme = {
+  title: "",
+  description: "",
+  install: "",
+  usage: "",
+  contribute: "",
+  test: "",
+  license: "",
+  badge: "",
+  gitUser: "",
+  email: "",
+  image: "",
+};
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for information about my application repository
@@ -7,6 +21,7 @@ let fs = require("fs")
 // WHEN I enter my project title
 // THEN this is displayed as the title of the README
 // ! create readme.md
+// ? create json to save for later?
 // ! title input
 
 // WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
@@ -41,13 +56,126 @@ let fs = require("fs")
 // ! 'jump-to' functionality?
 // THEN I am taken to the corresponding section of the README
 
+// NEW OR OLD
 inquirer
   .prompt([
     {
-      type:"input",
-      message:"",
-      name:"username"
-    }
-  ]).then(function(res){
-    console.log(res)
-  })
+      type: "checkbox",
+      message: "Create a new file or edit an existing one?",
+      name: "action",
+      choices: ["new", "existing"],
+    },
+  ])
+  .then(function (res) {
+    res.action === "new" ? fnNew() : fnOld();
+  });
+
+// CREATE NEW ENTRY
+function fnNew() {
+  inquirer
+    .prompt([
+      //   title: "",
+      // description: "",
+      // install: "",
+      // usage: "",
+      // test: "",
+      // license: "",
+      // badge: "",
+      // gitUser: "",
+      // email: ""
+      {
+        type: "input",
+        message: "Please enter a title for your project",
+        name: "title",
+      },
+      {
+        type: "input",
+        message: "Please enter a description for your project",
+        name: "description",
+      },
+      {
+        type: "input",
+        message: "Please enter the usage for your project",
+        name: "usage",
+      },
+      {
+        type: "input",
+        message: "Please enter contributors to your project",
+        name: "contribute",
+      },
+      {
+        type: "input",
+        message: "Please enter a test for your project",
+        name: "test",
+      },
+      {
+        type: "checkbox",
+        message: "Please enter a license for your project",
+        name: "license",
+        choices: [],
+      },
+      {
+        type: "input",
+        message: "Please enter a badge for your project",
+        name: "badge",
+      },
+      {
+        type: "input",
+        message: "Please enter your GitHub username",
+        name: "gitUser",
+      },
+      {
+        type: "input",
+        message: "Please enter your email",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "Please enter image url",
+        name: "image",
+      },
+    ])
+    .then(function (res) {
+      // console.log(res);
+      for (let para in readme) {
+        para = res[`${para}`];
+      }
+      readme.title = res.title;
+      readme.description = res.description;
+      readme.usage = res.usage;
+      readme.contribute = res.contribute
+      readme.test = res.test;
+      readme.license = res.license;
+      readme.badge = res.badge;
+      readme.gitUser = res.gitUser;
+      readme.email = res.email;
+      readme.image = res.image;
+
+      console.log(readme);
+
+      fnWrite()
+    });
+}
+
+function fnOld() {
+  // open json file
+}
+
+function fnWrite() {
+  // fs.writeFile("README.md", rawText, function(err)
+  fs.writeFile() {
+    if(err) throw err;
+    // write text file
+  
+  }
+  
+}
+
+
+//   console.log("Success!");
+
+// });
+
+// if (response.confirm === response.password) {
+//   console.log("Success!");
+// }
