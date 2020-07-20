@@ -1,5 +1,5 @@
-# asdf
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+# Test Project
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
   * [Description](#description)
   * [Install](#install)
@@ -8,22 +8,22 @@
   * [License](#license)
   * [Contact](#contact)
 ## Description
-asdf
+lorem ipsum is wonderful text for filling space in a document
 ## Install
-asdf
+Installing this application isn't necessary
 
 ## Usage
-adsf
+It is used to fulfill requirements.
 
 ## Contributions
-adsf
+Me, myselft, and I.
 
 ## License
-GNU
+MIT
 
 ## Contact
-[asdf](https://github.com/asdf)
-asdf
+[cjkook](https://github.com/cjkook)
+cjko.audio@gmail.com
 
-![Screenshot](asdf)
+![Screenshot](test.png)
 
